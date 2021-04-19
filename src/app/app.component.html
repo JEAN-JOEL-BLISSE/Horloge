@@ -1,0 +1,223 @@
+
+
+<!-- <div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-6 text-center">
+      <ul class="nav nav-light-success nav-pills" id="myTab3" role="tablist">
+        <li class="nav-item">
+          <a routerLink="/Home" class="nav-link {{activer}}" id="home-tab-3">
+            <span class="nav-text">Agenda</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/Progression" class="nav-link" id="profile-tab-3" aria-controls="profile">
+            <span class="nav-text">Suivre la progression</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="col-lg-6 mt-5 text-center">
+    </div>
+    
+    <div class="col-lg-6 mt-5 text-center">
+    </div>
+  </div>
+</div> -->
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-1 mt-5 text-center">
+      <!-- <table class="table table-bordered table-hover mt-5" id="kt_datatable">
+        <thead>
+          <tr>
+            <th *ngIf="resterCache == true">id</th>
+            <th>Date</th>
+            <th>Tache</th>
+            <th *ngIf="tabTache.length != 0">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of tabTache">
+            <td style="width: 50px;" *ngIf="resterCache == true">{{item?.champId}}</td>
+            <td style="width: 50px;">{{item?.champDate}}</td>
+            <td>{{item?.champTache}}</td>
+            <td style="width: 50px;">
+              <a href="#" class="btn btn-icon btn-outline-success" title="Supprimer" (click)="supprimerTache(item?.champId)">
+                <i class="flaticon2-poll-symbol">x</i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table> -->
+    </div>
+    
+    <!--bloc de gauche-->
+    <div class="col-lg-10 mt-5 text-center">
+      <div class="card card-custom mt-5">
+        <div class="card-header">
+          <h3 class="card-title">
+            Tâches
+          </h3>
+        </div>
+        <!--begin::Form-->
+        <form class="form">
+          <div class="card-body">
+            <!-- <div class="form-group">
+              <div class="input-group">
+                <input id="idDate" type="text" class="form-control" placeholder="Date de la tâche*"/>
+              </div>
+            </div> -->
+            <div class="form-group">
+              <div class="input-group">
+                <textarea id="idTache" type="text" class="form-control" placeholder="Entrer la tâche*"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button type="button" class="btn btn-primary mr-2" (click)="creerTache()">Creer</button>
+            <button type="reset" class="btn btn-danger">Annuler</button>
+          </div>
+        </form>
+        <!--end::Form-->
+      </div>
+    </div>
+    
+    <!--bloc de droite-->
+    <div class="col-lg-1 mt-5 text-center">
+      <!-- <table class="table table-bordered table-hover mt-5" id="kt_datatable">
+        <thead>
+          <tr>
+            <th *ngIf="resterCache == true">id</th>
+            <th>Date</th>
+            <th>Tache</th>
+            <th *ngIf="tabTache.length != 0">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of tabTache">
+            <td style="width: 50px;" *ngIf="resterCache == true">{{item?.champId}}</td>
+            <td style="width: 50px;">{{item?.champDate}}</td>
+            <td>{{item?.champTache}}</td>
+            <td style="width: 50px;">
+              <a href="#" class="btn btn-icon btn-outline-success" title="Supprimer" (click)="supprimerTache(item?.champId)">
+                <i class="flaticon2-poll-symbol">x</i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table> -->
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <!--bloc de gauche-->
+    <div class="col-lg-1 mt-5 text-center">
+    </div>
+    <div class="col-lg-10 mt-5 text-center">
+      <div class="container py-5">
+        <div class="row">
+          <!-- Start lane -->
+          <div class="col-12 col-lg-4">
+            <div class="card mb-3">
+              <div class="card-header bg-light">
+                <div *ngIf="tabTache.length !== 0" style="float: left; background-color: rgba(53, 97, 155, 0.397); color: rgb(22, 1, 1); border: 1px solid rgba(53, 97, 155, 0.397); border-radius: 50px; width: 25px; height: 25px;">
+                  <span class="nav-text"><b>{{tabTache.length}}</b></span>
+                </div>
+                <h3 class="card-title h5 mb-1">
+                  <b>Ouvrir</b>
+                </h3> 
+              </div>
+              <div class="card-body">
+                <div class="tasks" id="backlog">
+                  <small *ngIf="tabTache.length == 0">Aucune tache ouverte</small>
+                  <!-- Start task -->
+                  <div class="card mb-3 cursor-grab" *ngFor="let item of tabTache">
+                    <div class="card-body">
+                      <p class="mb-0">{{item?.champTache}}</p>
+                    </div>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                      <button type="button" class="btn btn-warning" title="Commencer la tache" (click)="tacheEnCours(item?.champId, 'O')">Commencer</button>
+                      <button type="button" class="btn btn-success" title="Marquer comme terminé" (click)="tacheTermine(item?.champId, 'O')">Terminer</button>
+                    </div>
+                  </div>
+                  <!-- End task -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End lane -->
+          
+          <!-- Start lane -->
+          <div class="col-12 col-lg-4">
+            <div class="card mb-3">
+              <div class="card-header bg-light">
+                <div *ngIf="tabTacheEnCours.length !== 0" style="float: left; background-color: rgba(53, 97, 155, 0.397); color: rgb(22, 1, 1); border: 1px solid rgba(53, 97, 155, 0.397); border-radius: 50px; width: 25px; height: 25px;">
+                  <span class="nav-text"><b>{{tabTacheEnCours.length}}</b></span>
+                </div>
+                <h3 class="card-title h5 mb-1">
+                  <b>En cours</b>
+                </h3>
+              </div>
+              <div class="card-body">
+                <div class="tasks" id="progress">
+                  <small *ngIf="tabTacheEnCours.length== 0">Aucune tache en cours</small>
+                  <!-- Start task -->
+                  <div class="card mb-3 cursor-grab" *ngFor="let itemEnCours of tabTacheEnCours">
+                    <div class="card-body">
+                      <p class="mb-0">{{itemEnCours?.champTache}}</p>
+                    </div>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                      <button type="button" class="btn btn-primary" title="Ouverture de la tache" (click)="ouvertureTache(itemEnCours?.champId, 'EC')">Ouvrir</button>
+                      <button type="button" class="btn btn-success" title="Marquer comme terminé" (click)="tacheTermine(itemEnCours?.champId, 'EC')">Terminer</button>
+                    </div>
+                  </div>
+                  <!-- End task -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End lane -->
+          
+          <!-- Start lane -->
+          <div class="col-12 col-lg-4">
+            <div class="card mb-3">
+              <div class="card-header bg-light">
+                <div *ngIf="tabTacheTermine.length !== 0" style="float: left; background-color: rgba(53, 97, 155, 0.397); color: rgb(22, 1, 1); border: 1px solid rgba(53, 97, 155, 0.397); border-radius: 50px; width: 25px; height: 25px;">
+                  <span class="nav-text"><b>{{tabTacheTermine.length}}</b></span>
+                </div>
+                <h3 class="card-title h5 mb-1">
+                  <b>Terminer</b>
+                </h3>
+              </div>
+              <div class="card-body">
+                <div class="tasks" id="completed">
+                  <small *ngIf="tabTacheTermine.length== 0">Aucune tache terminée</small>
+                  <!-- Start task -->
+                  <div class="card mb-3 cursor-grab" *ngFor="let itemTermine of tabTacheTermine">
+                    <div class="card-body">
+                      <p class="mb-0">{{itemTermine?.champTache}}</p>
+                    </div>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                      <button type="button" class="btn btn-primary" title="Ouverture de la tache" (click)="ouvertureTache(itemTermine?.champId, 'T')">Ouvrir</button>
+                      <button type="button" class="btn btn-warning" title="Commencer la tache" (click)="tacheEnCours(itemTermine?.champId, 'T')">Commencer</button>
+                    </div>
+                  </div>
+                  <!-- End task -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End lane -->
+          
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-1 mt-5 text-center">
+    </div>
+  </div>
+</div>
